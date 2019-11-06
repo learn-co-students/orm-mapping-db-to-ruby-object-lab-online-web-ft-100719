@@ -7,6 +7,7 @@ class Student
     new_student.id = row[0]
     new_student.name = row[1]
     new_student.grade = row[2]
+    new_student
   end
 
   def self.all
@@ -24,11 +25,11 @@ class Student
       FROM students 
       WHERE name = ?
       LIMIT 1
-    SQL 
+    SQL
 
-    DB[:conn].execute(sql, name).map do |row| 
-      self.new_from_db(row) 
-    end.first 
+    DB[:conn].execute(sql,name).map do |row|
+      self.new_from_db(row)
+    end.first
   end
   
   def save
