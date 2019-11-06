@@ -74,17 +74,15 @@ class Student
         self.new_from_db(row)
       end
   end
-
-  def self.first_student_in_grade_10 
-    self.first_X_students_in_grade_10(1)
   
+  def self.first_student_in_grade_10 
+    first_stu = self.first_X_students_in_grade_10(1)[0]
   end
 
   def self.all_students_in_grade_X(x)
     
     # retrieve all the rows from the "Students" database
     # remember each row should be a new instance of the Student class
-    
       sql = <<-SQL
         SELECT *
         FROM students
@@ -95,7 +93,8 @@ class Student
         self.new_from_db(row)
       end
   end
-
+  
+  
   def self.find_by_name(name)
     # find the student in the database given a name
     # return a new instance of the Student class
