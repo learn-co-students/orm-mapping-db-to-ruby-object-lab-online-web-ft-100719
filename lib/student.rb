@@ -3,16 +3,25 @@ class Student
 
   def self.new_from_db(row)
     # create a new Student object given a row from the database
+  
+    new_student = Student.new
+    new_student.id = row[0]
+    new_student.name = row[1]
+    new_student.grade = row[2]
+    new_student
   end
 
   def self.all
     # retrieve all the rows from the "Students" database
     # remember each row should be a new instance of the Student class
+    
   end
 
   def self.find_by_name(name)
     # find the student in the database given a name
     # return a new instance of the Student class
+    SELECT students FROM name 
+    
   end
   
   def save
@@ -23,7 +32,7 @@ class Student
 
     DB[:conn].execute(sql, self.name, self.grade)
   end
-  
+  #create_table
   def self.create_table
     sql = <<-SQL
     CREATE TABLE IF NOT EXISTS students (
@@ -35,9 +44,14 @@ class Student
 
     DB[:conn].execute(sql)
   end
-
+#dropes drop_table
   def self.drop_table
     sql = "DROP TABLE IF EXISTS students"
     DB[:conn].execute(sql)
+  end
+  
+  def self.new_from_db()
+    Student.new()
+    
   end
 end
